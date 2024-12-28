@@ -33,17 +33,18 @@ function App() {
     return (
         <Router>
             <Routes>
-                {}
                 <Route
                     path="/"
                     element={
                         <div className="container">
                             <h1>Dog Showcase</h1>
-                            {dogImage && (
+                            {dogImage ? (
                                 <>
                                     <img src={dogImage} alt="Random Dog" className="dog-image" />
                                     <p><strong>Breed:</strong> {dogBreed}</p>
                                 </>
+                            ) : (
+                                <p>Loading...</p>
                             )}
                             <div>
                                 <button onClick={fetchRandomDog}>Show Another Dog</button>
@@ -61,12 +62,7 @@ function App() {
                         </div>
                     }
                 />
-
-                {}
-                <Route
-                    path="/details/:id"
-                    element={<DogDetails favorites={favorites} />}
-                />
+                <Route path="/details/:id" element={<DogDetails favorites={favorites} />} />
             </Routes>
         </Router>
     );
